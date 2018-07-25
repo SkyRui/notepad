@@ -1,0 +1,25 @@
+﻿                MSC/VLR-------HLR/AuC
+                /           \
+             BSC       BSC
+            /     \      / 1    \
+         BTS BTS BTS BTS
+
+MSC:
+
+BSC:
+
+BTS:
+
+25MHz带宽，一个载频 200kHz，帧4.615ms，一个帧8个时隙（一个设备最多占用4个），1-7承载业务，0来管理（0占用RACH信道）
+FCCH和SCH进行时间和频率同步，BCCH接收广播，RACH和AGCH申请接入和批准接入。寻呼PCH。SDCCH，发短信。SACCH每26帧出现，传递LAI、CGI信令。
+
+GPRS，空口增加PCU、SGSN、GGSN信道
+PCU分组控制单元与BSC部署在一起，把分组数据从GSM语音数据分离，传递给SGSN。
+SGSN服务支持节点，和MSC几乎一样，鉴权、位置更新、路由选择。
+GGSN网关节点，网络对应实体GMSC（移动交换关口局，网关和路由）
+
+空口对照见《大话移动通信》p100.表3.1
+GPRS通过GMSK调制，CS-1到CS-4四种编码
+
+EDGE，MCS-1到MCS-9九种编码，采用MSC-5或更高时，陪喝8PSK调制
+

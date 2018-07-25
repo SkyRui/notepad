@@ -10,4 +10,4 @@
 cdma2000和wcdma有什么区别？
 http://product.pconline.com.cn/itbk/sjtx/sjwt/1706/9465992.html
 
-GSM->GPRS->EDGE->WCDMA->HSBPA->HSWPA->HSPA+->LTE-FDD
+GSM->GPRS->EDGE->WCDMA->HSDPA->HSUPA->HSPA+->LTE-FDD

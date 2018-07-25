@@ -10,7 +10,9 @@ BSC:
 
 BTS:
 
-25MHz带宽，一个载频 200kHz，帧4.615ms，一个帧8个时隙（一个设备最多占用4个），1-7承载业务，0来管理（0占用RACH信道）
+1、25MHz带宽，一个载频 200kHz，
+2、一个帧4.615ms，一个帧8个时隙（一个设备最多占用4个），1-7承载业务，0来管理（0占用RACH信道）
+
 FCCH和SCH进行时间和频率同步，BCCH接收广播，RACH和AGCH申请接入和批准接入。寻呼PCH。SDCCH，发短信。SACCH每26帧出现，传递LAI、CGI信令。
 
 GPRS，空口增加PCU、SGSN、GGSN信道
@@ -23,3 +25,6 @@ GPRS通过GMSK调制，CS-1到CS-4四种编码
 
 EDGE，MCS-1到MCS-9九种编码，采用MSC-5或更高时，陪喝8PSK调制
 
+
+GSM信道
+http://www.diangon.com/zhishi/yidong/201503/00021403.html

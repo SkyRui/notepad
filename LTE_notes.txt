@@ -19,3 +19,21 @@
 
 
 
+实时语音业务通常采用RLC透明模式。
+UM模式的业务有小区广播和IP电话。
+AM模式是分组数据传输的标准模式，比如www和电子邮件下载。
+
+下行通过接受CQI慢速调整
+上行通过
+
+非竞争接入
+Msg0：eNB携带Preamble码从PDCCH发送
+Msg1：Ue从指定PRACH用指定Preamble码接入
+（2ms内，长度2-10ms内）
+Msg2：eNB从MAC的DL-SCH->PDCCH进行相应，与竞争接入相同，可以相应多个Ue的Msg1。
+
+
+
+
+
+

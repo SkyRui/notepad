@@ -1,0 +1,49 @@
+﻿下行物理信道
+PDSCH
+PBCH
+PMCH
+PDCCH
+PCFICH
+PHICH
+
+概念
+    CA功能可以支持连续或非连续载波聚合，每个载波最大可以使用的资源是110个RB。
+
+    每个用户在每个载波上使用独立的HARQ实体，每个传输块只能映射到特定的一个载波上。
+
+    每个载波上面的PDCCH信道相互独立，可以重用R8版本的设计，使用每个载波的PDCCH为每个载波的PDSCH和PUSCH信道分配资源。也可以使用CIF域利用一个载波上的PDCCH信道调度多个载波的上下行资源分配。
+
+
+载波聚合主要分为
+    intra-band 和
+    inter-band载波聚合
+    其中intra-band载波聚合又分为连续(contiguous)和非连续(non-contiguous)。
+
+
+根据3GPP 36.104 6.5.3要求：
+
+    1）intra-band CA (contiguous)两频点采用不同RRU/RFU，同步时延需在130ns以下；
+
+    2）intra-band CA (non-contiguous)两频点采用不用RRU/RFU，同步时延需在260ns以下；
+
+    3）inter-band CA两频点采用不同RRU/RFU，同步时延需在1.3us以下。
+
+    根据3GPP 36.808 5.7要求，intra-band CA (contiguous)中心频点间隔要满足300khz的整数倍
+
+
+载波聚合状态：
+
+    CA UE共有三种状态：SCell（Secondary Cell）配置未激活、SCell配置并激活、SCell未配置。
+
+    通过RRC信令配置或去配置SCC,通过MAC信令激活或去激活SCC。
+
+    通常通过A4事件配置SCC,通过A2事件去配置SCC
+
+
+
+
+
+
+
+
+

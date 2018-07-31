@@ -33,6 +33,9 @@ Msg1：Ue从指定PRACH用指定Preamble码接入
 Msg2：eNB从MAC的DL-SCH->PDCCH进行相应，与竞争接入相同，可以相应多个Ue的Msg1。
 
 
+测量：
+上行反馈：基站通过终端信号质量（CQI）等反馈的统计，较慢的调整各用户功率。PDCCH，周期、非周期上报。
+
 
 
 

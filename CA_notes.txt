@@ -1,10 +1,15 @@
-﻿下行物理信道
+﻿Principle, Reason for Degradation of CA throughput
+
+
+下行物理信道
 PDSCH
 PBCH
 PMCH
 PDCCH
 PCFICH
 PHICH
+
+
 
 概念
     CA功能可以支持连续或非连续载波聚合，每个载波最大可以使用的资源是110个RB。
@@ -14,10 +19,16 @@ PHICH
     每个载波上面的PDCCH信道相互独立，可以重用R8版本的设计，使用每个载波的PDCCH为每个载波的PDSCH和PUSCH信道分配资源。也可以使用CIF域利用一个载波上的PDCCH信道调度多个载波的上下行资源分配。
 
 
+
 载波聚合主要分为
     intra-band 和
     inter-band载波聚合
     其中intra-band载波聚合又分为连续(contiguous)和非连续(non-contiguous)。
+
+
+
+载波聚合的5种场景
+
 
 
 根据3GPP 36.104 6.5.3要求：
@@ -31,6 +42,17 @@ PHICH
     根据3GPP 36.808 5.7要求，intra-band CA (contiguous)中心频点间隔要满足300khz的整数倍
 
 
+
+PCell负责与UE之间的RRC通信。SCell与UE之间不存在任何RRC通信。
+
+配置了CA的UE可与1个PCell和至多4个SCell相连。
+
+Serving cell，顾名思义，是为UE提供服务（上下行传输）的小区。
+
+配置了CA的UE在所有的serving cell内使用相同的C-RNTI。
+
+
+
 载波聚合状态：
 
     CA UE共有三种状态：SCell（Secondary Cell）配置未激活、SCell配置并激活、SCell未配置。
@@ -38,6 +60,60 @@ PHICH
     通过RRC信令配置或去配置SCC,通过MAC信令激活或去激活SCC。
 
     通常通过A4事件配置SCC,通过A2事件去配置SCC
+
+
+
+连续的载波单元之间的中心频率间隔必须是300 kHz的整数倍
+
+
+载波单元的配置需要满足如下要求：
+ 所有的载波单元需要有相同的双工模式（duplex scheme）；
+ 下行载波单元的个数根据该UE的下行聚合能力来配置；
+ 上行载波单元的个数根据该UE的上行聚合能力来配置；
+ 对于某个UE而言，配置的上行载波单元数不能大于下行载波单元数。这是因为，如果某个SCell的上行资源被使用，则该SCell的下行资源也一定被使用。反过来，如果某个SCell的下行资源被使用，该SCell的上行资源却未必被使用。
+ 在典型的TDD部署中，上行和下行的载波单元个数是一样的，并且不同载波单元的上下行配置也应该是相同的。但只要下行到上行的切换时间（downlink-uplink switch time）足够大，特殊子帧的配置可以不同。
+
+
+
+异构网络的影响
+如果在不同的小区层间使用不同的频率，可以避免层间的强干扰。但在LTE中，不同的小区层使用不同的频率会导致不必要的频率碎片。因此在LTE的异构网络部署中，不同小区可以使用不同的传输功率，但使用相同的频率。如果二者使用相同的频率，宏基站会对小基站造成很大的干扰，此时inter-layer interference（实际上也是某种类型的inter-cell interference）会比处于同一层的inter-cell interference更加严重。
+在异构网络中，对于PDSCH传输而言，可以通过小区间干扰协调（ICIC）的方式来避免干扰。但对于无法进行动态调度的下行L1/L2控制信道（PCFICH/PHICH/PDCCH）而言，通常使用跨载波调度（cross-carrier scheduling）的方式来避免小区间的干扰（
+
+
+
+对物理层的影响
+每个载波单元有独立的物理层（physical layer），包括控制信令（control signaling）、调度（scheduling）和HARQ重传。
+每个载波单元有一个独立的控制区域。
+每个载波单元有一个独立的DL-SCH或UL-SCH
+
+
+
+对HARQ的影响
+CA主要对MAC层可见。UE对应每个serving cell，都有各自独立的HARQ entity。并且在没有使用空分复用（spatial multiplexing）的情况下，每个serving cell在每个TTI产生1个TB（空分复用的情况下，每个TTI产生2个TB）。每个TB及其可能的HARQ重传只与一个serving cell匹配。
+
+
+
+对调度的影响
+
+
+
+CA对RLC/PDCP层的影响（HARQ process共同组成了一个HARQ 实体）
+CA对于RLC层和PDCP层是不可见的。但由于可能增大的数据量，需要扩大RLC的buffer大小。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
